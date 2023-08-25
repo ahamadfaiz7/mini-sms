@@ -1,15 +1,13 @@
 package com.sms.studentManagementSystem.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "student")
-public class Student
-{
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
@@ -44,7 +42,8 @@ public class Student
 //            inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
 //    private List<Contact> contacts = new ArrayList<>();
 
-    public Student() {}
+    public Student() {
+    }
 
     public Integer getStudentId() {
         return studentId;
