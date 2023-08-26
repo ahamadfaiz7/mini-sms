@@ -2,16 +2,18 @@ package com.sms.studentManagementSystem.entity;
 
  import jakarta.persistence.*;
 
+ import java.io.Serializable;
+
 @Entity
 @Table(name = "contact")
-public class Contact {
+public class Contact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contactId;
 
     @Column
-    private String name;
+    private String contactName;
 
     @Column
     private String relationship;
@@ -33,12 +35,12 @@ public class Contact {
         this.contactId = contactId;
     }
 
-    public String getName() {
-        return name;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     public String getRelationship() {

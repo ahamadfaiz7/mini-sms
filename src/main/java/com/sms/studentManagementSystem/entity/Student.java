@@ -2,12 +2,15 @@ package com.sms.studentManagementSystem.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
@@ -15,7 +18,7 @@ public class Student {
     @Column
     private String studentName;
 
-    @Column
+    @Column(unique=true)
     private Integer studentNumber;
 
     @Column
@@ -33,14 +36,14 @@ public class Student {
     @Column
     private String address;
 
-//    @OneToOne
-//    private Category category;
-//
-//    @ManyToMany
-//    @JoinTable(name = "STUDENT_CONTACT",
-//            joinColumns = @JoinColumn(name="STUDENT_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
-//    private List<Contact> contacts = new ArrayList<>();
+    @JoinColumn(name = "categoryId", referencedColumnName = "studentId")
+    private Category category;
+
+    @ManyToMany
+    @JoinTable(name = "STUDENT_CONTACT",
+            joinColumns = @JoinColumn(name="STUDENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
+    private List<Contact> contacts = new ArrayList<>();
 
     public Student() {
     }
