@@ -15,9 +15,6 @@
 
 <div class="container">
     <h3>Student List</h3>
-    <hr>
-    <p class="h4 mb-4">Students</p>
-
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -28,6 +25,7 @@
             <th>Gender</th>
             <th>Category</th>
             <th>View Details</th>
+            <th>View Contacts</th>
             <th>Operation</th>>
         </tr>
         </thead>
@@ -42,6 +40,9 @@
             <td th:text="${student.category.categoryName}"/>
             <td>
                 <a th:href="@{'/students/showDetails/'+${student.studentId}}">Details</a>
+            </td>
+            <td>
+                    <a th:href="@{'/students/showContacts/'+${student.studentId}}">Contacts</a>
             </td>
             <td>
                 <a th:href="@{'/students/remove/'+${student.studentId}}">Delete</a>

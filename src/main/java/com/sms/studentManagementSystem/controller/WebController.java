@@ -18,11 +18,6 @@ public class WebController {
     @Autowired
     StudentService studentService;
 
-    @GetMapping(value = "/index2")
-    public String index() {
-        return "index";
-    }
-
     @GetMapping("/showStudents")
     public String findAllStudents(Model model) {
         List<Student> students = studentService.listAll();
@@ -38,7 +33,7 @@ public class WebController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute("theStudent") @RequestBody Student student) {
+    public String saveStudent(Model model, @ModelAttribute("theStudent") @RequestBody Student student) {
         String responseMessage;
         try {
             studentService.save(student);
@@ -52,7 +47,8 @@ public class WebController {
                 responseMessage = "Error saving student. Detail Error=>" + "\n";
                 detailError = responseMessage + e.getMessage();
             }
-            return responseMessage + detailError;
+            model.addAttribute("error", responseMessage + detailError);
+            return "student-error";
         }
         return "redirect:/students/showStudents";
     }
@@ -80,5 +76,12 @@ public class WebController {
         students.add(student);
         model.addAttribute("students", students);
         return "student-detail";
+    }
+
+    @GetMapping("/showContacts/{id}")
+    public String showContacts(Model model, @PathVariable("id") int studentId) {
+        Student student = studentService.findById(studentId);
+        model.addAttribute("contacts", student);
+        return "student-contacts";
     }
 }

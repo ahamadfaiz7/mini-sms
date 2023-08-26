@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Student Details</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Student Details</h3>
+    <hr>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+    <p class="h4 mb-4" th:text="'Student : ' + ${contacts.studentName}" />
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Contact Name</th>
+            <th>Relationship</th>
+            <th>Contact Address</th>
+            <th>Contact Email</th>
+            <th>Contact Phone</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="contact : ${contacts.contacts}">
+            <td th:text="${contact.contactName}"/>
+            <td th:text="${contact.relationship}"/>
+            <td th:text="${contact.address}"/>
+            <td th:text="${contact.email}"/>
+            <td th:text="${contact.phone}"/>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+</div>
+
+</body>
+</html>
