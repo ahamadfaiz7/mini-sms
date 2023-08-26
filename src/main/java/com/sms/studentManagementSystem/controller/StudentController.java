@@ -18,13 +18,13 @@ public class StudentController implements Serializable {
     StudentService studentService;
 
     @GetMapping("/students")
-    public List<Student> findAll() {
+    public List<Student> findAllStudents() {
         List<Student> students = studentService.listAll();
         return students;
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String save(@RequestBody Student student) {
+    public String saveStudent(@RequestBody Student student) {
         String responseMessage;
         try {
             studentService.save(student);
@@ -41,5 +41,21 @@ public class StudentController implements Serializable {
             return responseMessage + detailError;
         }
         return "Student saved successfully";
+    }
+
+    @DeleteMapping("/remove/{id}")
+    public String removeStudent(@PathVariable("id") int studentId) {
+        String responseMessage;
+        try {
+            Student student = studentService.findById(studentId);
+            studentService.remove(student);
+        } catch (Exception e) {
+            String detailError;
+            e.printStackTrace();
+            responseMessage = "Error deleting student. Detail Error=>" + "\n";
+            detailError = responseMessage + e.getMessage();
+            return responseMessage + detailError;
+        }
+        return "Student deleted successfully";
     }
 }

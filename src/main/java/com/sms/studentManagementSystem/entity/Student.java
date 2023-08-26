@@ -22,24 +22,27 @@ public class Student implements Serializable {
     private Integer studentNumber;
 
     @Column
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
     @Column
     private String gender;
 
     @Column
+    @Temporal(TemporalType.DATE)
     private Date startingDate;
 
     @Column
+    @Temporal(TemporalType.DATE)
     private Date leavingDate;
 
     @Column
     private String address;
 
-    @JoinColumn(name = "categoryId", referencedColumnName = "studentId")
+    @OneToOne(cascade = CascadeType.ALL)
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "STUDENT_CONTACT",
             joinColumns = @JoinColumn(name="STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
@@ -112,4 +115,19 @@ public class Student implements Serializable {
         this.address = address;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
 }
