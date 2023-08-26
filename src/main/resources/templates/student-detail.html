@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Student Details</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Student Details</h3>
+    <hr>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+    <h4 class="h4 mb-4">Student Details</h4>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Student Id</th>
+            <th>Student Name</th>
+            <th>Student Number</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Starting Date</th>
+            <th>Leaving Date</th>
+            <th>Address</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId}"/>
+            <td th:text="${student.studentName}"/>
+            <td th:text="${student.studentNumber}"/>
+            <td th:text="${student.dateOfBirth}"/>
+            <td th:text="${student.gender}"/>
+            <td th:text="${student.startingDate}"/>
+            <td th:text="${student.leavingDate}"/>
+            <td th:text="${student.address}"/>
+            <td th:text="${student.category.categoryName}"/>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+</div>
+
+</body>
+</html>

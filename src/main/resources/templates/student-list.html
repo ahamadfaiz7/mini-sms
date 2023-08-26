@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Student List</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Student List</h3>
+    <hr>
+    <p class="h4 mb-4">Students</p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Student Id</th>
+            <th>Student Name</th>
+            <th>Student Number</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Category</th>
+            <th>View Details</th>
+            <th>Operation</th>>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId}"/>
+            <td th:text="${student.studentName}"/>
+            <td th:text="${student.studentNumber}"/>
+            <td th:text="${student.dateOfBirth}"/>
+            <td th:text="${student.gender}"/>
+            <td th:text="${student.category.categoryName}"/>
+            <td>
+                <a th:href="@{'/students/showDetails/'+${student.studentId}}">Details</a>
+            </td>
+            <td>
+                <a th:href="@{'/students/remove/'+${student.studentId}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/students/add}"
+       class="btn btn-primary btn-sm mb-3">
+        Add new Student
+    </a>
+
+</div>
+
+</body>
+</html>

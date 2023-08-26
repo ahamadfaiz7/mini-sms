@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save Student</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>Student Form</h3>
+    <hr>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+
+    <p class="h4 mb-4">Save Student</p>
+
+    <form action="#"
+            th:action="@{/students/save}"
+            th:object="${theStudent}"
+            method="POST">
+
+        <input type="text" th:field="*{studentName}" class="form-control mb-4 col-4" placeholder="Student Name" />
+        <input type="text" th:field="*{studentNumber}" class="form-control mb-4 col-4" placeholder="Student Number" />
+        <input type="text" th:field="*{dateOfBirth}" class="form-control mb-4 col-4" placeholder="Date of Birth" />
+        <input type="text" th:field="*{gender}" class="form-control mb-4 col-4" placeholder="Gender" />
+        <input type="text" th:field="*{startingDate}" class="form-control mb-4 col-4" placeholder="Starting Date" />
+        <input type="text" th:field="*{leavingDate}" class="form-control mb-4 col-4" placeholder="Leaving Date" />
+        <input type="text" th:field="*{address}" class="form-control mb-4 col-4" placeholder="Address" />
+        <input type="text" th:field="*{category.categoryName}" class="form-control mb-4 col-4" placeholder="Category" />
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+</div>
+</body>
+
+</html>
