@@ -17,6 +17,7 @@ public class WebController {
 
     @Autowired
     StudentService studentService;
+    List<String> errors = new ArrayList<>();
 
     @GetMapping("/showStudents")
     public String findAllStudents(Model model) {
@@ -42,13 +43,14 @@ public class WebController {
             e.printStackTrace();
             if (e.getMessage().contains("Unique index or primary key violation")) {
                 responseMessage = "Duplicate Student Number " + "\n";
-                detailError = "Please enter a different unique student number";
+                detailError = responseMessage + " Please enter a different unique student number";
             } else {
                 responseMessage = "Error saving student. Detail Error=>" + "\n";
                 detailError = responseMessage + e.getMessage();
             }
-            model.addAttribute("error", responseMessage + detailError);
-            return "student-error";
+            errors.add(detailError);
+            model.addAttribute("theStudent", student);
+            return "student-form";
         }
         return "redirect:/students/showStudents";
     }
