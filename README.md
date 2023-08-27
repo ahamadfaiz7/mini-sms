@@ -5,7 +5,7 @@ Application can be accessed from a web browser as a UI OR from  any rest client 
 Steps to run the application from front end UI
 ----------------------------------------------
 1. Clone the project from https://github.com/ahamadfaiz7/mini-sms 
-2. Import the project in your ide and do a clean build.
+2. Import the project in your ide and do a clean build.It has maven based project structure.
 3. Run the application bly running StudentManagementSystemApplication.java
 4. After the server is started the in memory db will be hosted on http://localhost:8787/h2-console.
 5. The url,username and password to connect to H2 database is in application.properties
@@ -95,6 +95,7 @@ Future improvements
 ----------------------
 1. validations on the UI should be done in later stages.
 2. Intuitive validation errors for the end user should be added.
-3. Validation on the client side and database columns should be synchronized.
-4. Few more unit tests to be added in the test suite in the future.
-5. Logging should be done using AOP advices.
+3. More constraints to be added in DB columns.
+4. Validation on the client side and database columns should be synchronized.
+5. Few more unit tests to be added in the test suite in the future.
+6. Logging should be done using AOP advices.

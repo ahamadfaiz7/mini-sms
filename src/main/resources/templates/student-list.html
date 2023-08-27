@@ -26,7 +26,8 @@
             <th>Category</th>
             <th>View Details</th>
             <th>View Contacts</th>
-            <th>Operation</th>>
+            <th>Delete</th>>
+            <th>Edit</th>>
         </tr>
         </thead>
 
@@ -46,6 +47,9 @@
             </td>
             <td>
                 <a th:href="@{'/students/remove/'+${student.studentId}}">Delete</a>
+            </td>
+            <td>
+                <a th:href="@{'/students/update/'+${student.studentId}}">Edit</a>
             </td>
         </tr>
         </tbody>

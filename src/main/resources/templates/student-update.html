@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Update Student</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>Student Update Form</h3>
+    <hr>
+
+    <a th:href="@{/students/showStudents}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Student List
+    </a>
+
+    <p class="h4 mb-4">Edit The Student</p>
+
+    <form action="#"
+            th:action="@{/students/save}"
+            th:object="${studentUpdate}"
+            method="POST">
+
+        <input type="hidden" th:field="*{studentId}" class="form-control mb-4 col-4" />
+        <input type="text" th:field="*{studentName}" class="form-control mb-4 col-4" placeholder="Student Name" />
+        <input type="text" th:field="*{studentNumber}" class="form-control mb-4 col-4" placeholder="Student Number" />
+        <input type="text" th:field="*{dateOfBirth}" class="form-control mb-4 col-4" placeholder="Date of Birth (YYYY-MM-DD)" />
+
+        <select th:field="*{gender}" class="form-control mb-4 col-4" placeholder="Gender">
+            <option th:value="'MALE'" th:text="Gender"></option>
+            <option th:value="'MALE'" th:text="MALE"></option>
+            <option th:value="'FEMALE'" th:text="FEMALE"></option>
+            <option th:value="'OTHER'" th:text="OTHER"></option>
+        </select>
+
+        <input type="text" th:field="*{startingDate}" class="form-control mb-4 col-4" placeholder="Starting Date (YYYY-MM-DD)" />
+        <input type="text" th:field="*{leavingDate}" class="form-control mb-4 col-4" placeholder="Leaving Date (YYYY-MM-DD)" />
+        <input type="text" th:field="*{address}" class="form-control mb-4 col-4" placeholder="Address" />
+
+        <select th:field="*{category.categoryName}" class="form-control mb-4 col-4" placeholder="Category">
+            <option th:value="'JUNIOR'" th:text="Category"></option>
+            <option th:value="'JUNIOR'" th:text="JUNIOR"></option>
+            <option th:value="'INTERMEDIATE'" th:text="INTERMEDIATE"></option>
+            <option th:value="'SENIOR'" th:text="SENIOR"></option>
+            <option th:value="'OTHER'" th:text="OTHER"></option>
+        </select>
+
+        <!-- Contact Info -->
+        <p class="h4 mb-4">Add Contacts</p>
+
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{contacts[0].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                    <input type="text" th:field="*{contacts[1].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                    <input type="text" th:field="*{contacts[2].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                    <input type="text" th:field="*{contacts[1].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                    <input type="text" th:field="*{contacts[2].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                    <input type="text" th:field="*{contacts[1].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                    <input type="text" th:field="*{contacts[2].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[1].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[2].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].phone}" class="h9 mb-3"
+                           placeholder="Phone"/>
+                    <input type="text" th:field="*{contacts[1].phone}" class="h9 mb-3"
+                           placeholder="Phone"/>
+                    <input type="text" th:field="*{contacts[2].phone}" class="h9 mb-3"
+                           placeholder="Phone"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-info col-2">Update</button>
+
+    </form>
+</div>
+</body>
+
+</html>

@@ -88,4 +88,20 @@ public class WebController {
         model.addAttribute("contacts", student);
         return "student-contacts";
     }
+
+    @GetMapping("/update/{id}")
+    public String findForUpdate(Model model, @PathVariable("id") int studentId) {
+        String responseMessage;
+        Student student = new Student();
+        try {
+            student = studentService.findById(studentId);
+        } catch (Exception e) {
+            String detailError;
+            e.printStackTrace();
+            model.addAttribute("studentUpdate", student);
+            return "student-update";
+        }
+        model.addAttribute("studentUpdate", student);
+        return "student-update";
+    }
 }

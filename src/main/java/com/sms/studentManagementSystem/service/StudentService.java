@@ -21,24 +21,48 @@ public class StudentService {
     }
 
     /**
-     * Save a specific student
+     * Save/Update a specific student
      *
      * @param student
      * @return Student
      */
     public Student save(Student student) {
+        Student createdStudent = null;
         List<Contact> contactList = new ArrayList();
-        contactList = student.getContacts().stream()
-                .filter(contact -> (contact.getAddress() != null && !contact.getAddress().equals(""))
-                                        || (contact.getPhone() != null && !contact.getPhone().equals(""))
-                                        || (contact.getRelationship() != null && !contact.getRelationship().equals(""))
-                                        || (contact.getEmail() != null && !contact.getEmail().equals(""))
-                                        || (contact.getContactName() != null && !contact.getContactName().equals("")))
-                .collect(Collectors.toList());
+        if (student != null && student.getStudentId() != null) {
+            Student oldStudent = findById(student.getStudentId());
+            if (oldStudent != null) {
+                oldStudent.setStudentName(student.getStudentName());
+                oldStudent.setStudentNumber(student.getStudentNumber());
+                oldStudent.setAddress(student.getAddress());
+                oldStudent.setDateOfBirth(student.getDateOfBirth());
+                oldStudent.setStartingDate(student.getStartingDate());
+                oldStudent.setLeavingDate(student.getLeavingDate());
+                oldStudent.setGender(student.getGender());
+                oldStudent.setContacts(student.getContacts());
+                oldStudent.setCategory(student.getCategory());
+                contactList = oldStudent.getContacts().stream()
+                        .filter(contact -> (contact.getAddress() != null && !contact.getAddress().equals(""))
+                                || (contact.getPhone() != null && !contact.getPhone().equals(""))
+                                || (contact.getRelationship() != null && !contact.getRelationship().equals(""))
+                                || (contact.getEmail() != null && !contact.getEmail().equals(""))
+                                || (contact.getContactName() != null && !contact.getContactName().equals("")))
+                        .collect(Collectors.toList());
+                oldStudent.setContacts(contactList);
+                createdStudent = studentRepository.save(oldStudent);
+            }
+        } else {
+            contactList = student.getContacts().stream()
+                    .filter(contact -> (contact.getAddress() != null && !contact.getAddress().equals(""))
+                            || (contact.getPhone() != null && !contact.getPhone().equals(""))
+                            || (contact.getRelationship() != null && !contact.getRelationship().equals(""))
+                            || (contact.getEmail() != null && !contact.getEmail().equals(""))
+                            || (contact.getContactName() != null && !contact.getContactName().equals("")))
+                    .collect(Collectors.toList());
 
-        student.setContacts(contactList);
-        Student createdStudent;
-        createdStudent = studentRepository.save(student);
+            student.setContacts(contactList);
+            createdStudent = studentRepository.save(student);
+        }
         return createdStudent;
     }
 
