@@ -1,4 +1,5 @@
-Student Management Application is a springboot application with H2 in memory database.
+Student Management System is a springboot application with H2 in memory database. 
+For the ui design it uses spring-boot-starter-thymeleaf, bootstrap and HTML. 
 Application can be accessed from a web browser as a UI OR from  any rest client like postman.
 
 Steps to run the application from front end UI
