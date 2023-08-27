@@ -21,7 +21,7 @@
         Back to Student List
     </a>
 
-    <p class="h4 mb-4">Save Student</p>
+    <p class="h4 mb-4">Add New Student</p>
 
     <form action="#"
             th:action="@{/students/save}"
@@ -30,12 +30,38 @@
 
         <input type="text" th:field="*{studentName}" class="form-control mb-4 col-4" placeholder="Student Name" />
         <input type="text" th:field="*{studentNumber}" class="form-control mb-4 col-4" placeholder="Student Number" />
-        <input type="text" th:field="*{dateOfBirth}" class="form-control mb-4 col-4" placeholder="Date of Birth" />
-        <input type="text" th:field="*{gender}" class="form-control mb-4 col-4" placeholder="Gender" />
-        <input type="text" th:field="*{startingDate}" class="form-control mb-4 col-4" placeholder="Starting Date" />
-        <input type="text" th:field="*{leavingDate}" class="form-control mb-4 col-4" placeholder="Leaving Date" />
+        <input type="text" th:field="*{dateOfBirth}" class="form-control mb-4 col-4" placeholder="Date of Birth (YYYY-MM-DD)" />
+
+        <select th:field="*{gender}" class="form-control mb-4 col-4" placeholder="Gender">
+            <option th:value="'MALE'" th:text="Gender"></option>
+            <option th:value="'MALE'" th:text="MALE"></option>
+            <option th:value="'FEMALE'" th:text="FEMALE"></option>
+            <option th:value="'OTHER'" th:text="OTHER"></option>
+        </select>
+
+        <input type="text" th:field="*{startingDate}" class="form-control mb-4 col-4" placeholder="Starting Date (YYYY-MM-DD)" />
+        <input type="text" th:field="*{leavingDate}" class="form-control mb-4 col-4" placeholder="Leaving Date (YYYY-MM-DD)" />
         <input type="text" th:field="*{address}" class="form-control mb-4 col-4" placeholder="Address" />
-        <input type="text" th:field="*{category.categoryName}" class="form-control mb-4 col-4" placeholder="Category" />
+
+        <select th:field="*{category.categoryName}" class="form-control mb-4 col-4" placeholder="Category">
+            <option th:value="'JUNIOR'" th:text="Category"></option>
+            <option th:value="'JUNIOR'" th:text="JUNIOR"></option>
+            <option th:value="'INTERMEDIATE'" th:text="INTERMEDIATE"></option>
+            <option th:value="'SENIOR'" th:text="SENIOR"></option>
+            <option th:value="'OTHER'" th:text="OTHER"></option>
+        </select>
+
+        <!-- Contact Info -->
+        <p class="h4 mb-4">Add Contact</p>
+
+        <input type="text" th:field="*{contacts[0].contactName}" class="form-control mb-4 col-4" placeholder="Contact Name" />
+        <input type="text" th:field="*{contacts[0].relationship}" class="form-control mb-4 col-4" placeholder="Relationship" />
+        <input type="text" th:field="*{contacts[0].address}" class="form-control mb-4 col-4" placeholder="Address" />
+        <input type="text" th:field="*{contacts[0].email}" class="form-control mb-4 col-4" placeholder="Email" />
+        <input type="text" th:field="*{contacts[0].phone}" class="form-control mb-4 col-4" placeholder="Phone" />
+
+
+
 
         <button type="submit" class="btn btn-info col-2">Save</button>
 
