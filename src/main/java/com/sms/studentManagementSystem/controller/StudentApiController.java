@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.io.Serializable;
 import java.util.List;
 
-
+/**
+ * This is an Api controller and will be called by any rest client or any other microservice
+ */
 @RestController
 @RequestMapping("/api")
-public class StudentController implements Serializable {
+public class StudentApiController implements Serializable {
 
     @Autowired
     StudentService studentService;

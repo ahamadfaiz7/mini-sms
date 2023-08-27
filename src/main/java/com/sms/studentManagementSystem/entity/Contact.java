@@ -1,8 +1,8 @@
 package com.sms.studentManagementSystem.entity;
 
- import jakarta.persistence.*;
+import jakarta.persistence.*;
 
- import java.io.Serializable;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "contact")

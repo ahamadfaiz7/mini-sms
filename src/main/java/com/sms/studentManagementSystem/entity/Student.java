@@ -19,7 +19,7 @@ public class Student implements Serializable {
     @Column
     private String studentName;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private Integer studentNumber;
 
     @Column
@@ -48,7 +48,7 @@ public class Student implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "STUDENT_CONTACT",
-            joinColumns = @JoinColumn(name="STUDENT_ID"),
+            joinColumns = @JoinColumn(name = "STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
     private List<Contact> contacts = new ArrayList<>();
 

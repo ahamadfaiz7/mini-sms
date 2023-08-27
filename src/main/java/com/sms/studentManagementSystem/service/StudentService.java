@@ -20,12 +20,16 @@ public class StudentService {
         return (List<Student>) studentRepository.findAll();
     }
 
+    /**
+     * Save a specific student
+     *
+     * @param student
+     * @return Student
+     */
     public Student save(Student student) {
         List<Contact> contactList = new ArrayList();
         contactList = student.getContacts().stream()
-                .filter(
-                        contact ->
-                                (contact.getAddress() != null && !contact.getAddress().equals(""))
+                .filter(contact -> (contact.getAddress() != null && !contact.getAddress().equals(""))
                                         || (contact.getPhone() != null && !contact.getPhone().equals(""))
                                         || (contact.getRelationship() != null && !contact.getRelationship().equals(""))
                                         || (contact.getEmail() != null && !contact.getEmail().equals(""))
@@ -38,10 +42,21 @@ public class StudentService {
         return createdStudent;
     }
 
+    /**
+     * Finds specific student
+     *
+     * @param studentId
+     * @return Student
+     */
     public Student findById(int studentId) {
         return studentRepository.findById(studentId).get();
     }
 
+    /**
+     * Delete a specific student
+     *
+     * @param student
+     */
     @Transactional
     public void remove(Student student) {
         studentRepository.delete(student);

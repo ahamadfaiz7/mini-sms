@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This is a web controller to be called by the html
+ */
 @Controller
 @RequestMapping("/students")
 public class WebController {
