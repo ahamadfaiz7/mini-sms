@@ -97,5 +97,6 @@ Future improvements
 2. Intuitive validation errors for the end user should be added.
 3. More constraints to be added in DB columns.
 4. Validation on the client side and database columns should be synchronized.
-5. Few more unit tests to be added in the test suite in the future.
-6. Logging should be done using AOP advices.
+5. UI model objects to be created and mapped with entities instead of using the entities on html.
+6. Few more unit tests to be added in the test suite in the future.
+7. Logging should be done using AOP advices.
