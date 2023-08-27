@@ -52,17 +52,54 @@
         </select>
 
         <!-- Contact Info -->
-        <p class="h4 mb-4">Add Contact</p>
+        <p class="h4 mb-4">Add Contacts</p>
 
-        <input type="text" th:field="*{contacts[0].contactName}" class="form-control mb-4 col-4" placeholder="Contact Name" />
-        <input type="text" th:field="*{contacts[0].relationship}" class="form-control mb-4 col-4" placeholder="Relationship" />
-        <input type="text" th:field="*{contacts[0].address}" class="form-control mb-4 col-4" placeholder="Address" />
-        <input type="text" th:field="*{contacts[0].email}" class="form-control mb-4 col-4" placeholder="Email" />
-        <input type="text" th:field="*{contacts[0].phone}" class="form-control mb-4 col-4" placeholder="Phone" />
-
-
-
-
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{contacts[0].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                    <input type="text" th:field="*{contacts[1].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                    <input type="text" th:field="*{contacts[2].contactName}" class="h9 mb-3"
+                           placeholder="Contact Name"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                    <input type="text" th:field="*{contacts[1].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                    <input type="text" th:field="*{contacts[2].relationship}" class="h9 mb-3"
+                           placeholder="Relationship"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                    <input type="text" th:field="*{contacts[1].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                    <input type="text" th:field="*{contacts[2].address}" class="h9 mb-3"
+                           placeholder="Address"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[1].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[2].email}" class="h9 mb-3"
+                           placeholder="Email"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{contacts[0].phone}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[1].phone}" class="h9 mb-3"
+                           placeholder="Email"/>
+                    <input type="text" th:field="*{contacts[2].phone}" class="h9 mb-3"
+                           placeholder="Email"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
         <button type="submit" class="btn btn-info col-2">Save</button>
 
     </form>
